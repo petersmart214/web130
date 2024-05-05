@@ -8,6 +8,9 @@
     <a href="#">Personal Siteplan</a>
 </nav>
 
+<body onload="document.addEventListener('drag', test); document.getElementById('runner-canvas').getContext('2d').fillRect(50,50,50,50)"></body>
+<canvas id="runner-canvas" width="667" height="150" draggable="true" style="width: 667px; height: 150px; position: fixed;"></canvas>
+
 <body>
     <h1>Peter Smart</h1>
 
@@ -24,5 +27,11 @@
     <h1>Javascript</h1>
     <p>todo...</p>
 
-    <canvas class="runner-canvas" width="667" height="150" style="width: 667px; height: 150px;"></canvas>
+    <script type="text/javascript">
+        function grab()
+        {
+            document.getElementById("runner-canvas").style.setProperty('top', event.clientY.toString());      
+        }
+        </script>
+            
 </body>
