@@ -1,8 +1,9 @@
 
-class vector {
+class Vector {
     constructor(x, y) {
         this.x = x;
         this.y = y;
+        return this
     }
 
     add_vector(vect) {
@@ -11,12 +12,13 @@ class vector {
     }
 }
 
-class phys_object {
+class PhysObject {
     constructor(mass, velocity, acceleration, position) {
         this.mass = mass;
         this.velocity = velocity;
         this.acceleration = acceleration;
         this.position = position;
+        return this
     }
     set_mass(new_mass) {
         this.mass = new_mass;
@@ -37,4 +39,4 @@ function process_velo(objects) {
     console.log(objects.position);
 }
 
-process_velo(new phys_object(10, new vector(5, 5), new vector(5, -5), new vector(0, 0)))
+process_velo(new PhysObject(10, new Vector(5, 5), new Vector(5, -5), new Vector(0, 0)))
