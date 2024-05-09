@@ -1,14 +1,7 @@
 
-class Vector {
-    constructor(x, y) {
-        this.x = x;
-        this.y = y;
-        return this
-    }
-
-    add_vector(vect) {
-        this.x = this.x + vect.x;
-        this.y = this.y + vect.y;
+class Vector { 
+    add_vector(vect1, vect2) {
+        return (vect1.x + vect2.x, vect1.y + vect2.y)
     }
 }
 
@@ -33,10 +26,10 @@ class PhysObject {
 
 function process_velo(objects) {
     for(i in objects) {
-        i.set_velo(i.velocity.add_vector(i.acceleration));
-        i.set_pos(i.position.add_vector(i.velocity));
+        i.set_velo(Vector.add_vector(i.acceleration, i.velocity));
+        i.set_pos(Vector.add_vector(i.velocity, i.position));
     }
     console.log(objects.position);
 }
 
-process_velo(new PhysObject(10, new Vector(5, 5), new Vector(5, -5), new Vector(0, 0)))
+process_velo(new PhysObject(10, (5, 5), (5, -5), (0, 0)))
