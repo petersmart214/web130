@@ -9,6 +9,7 @@ var clicking = false;
 var mouse_pos = [0, 0];
 load()
 
+//this is disgusting
 document.addEventListener("keydown", (event) => {console.log(event.key); if ((!event.isComposing) && event.key === "Escape") end()})
 document.addEventListener("keydown", (event) => {if ((!event.isComposing) && event.key === "Enter") start()});
 document.addEventListener("mousemove", (event) => {mouse_pos = [event.clientX, event.clientY]});
@@ -22,16 +23,15 @@ function load() {
 
 async function process() {
     while (loop) {
+        //much more disgusting
         item[1].style.setProperty('top', item[0].position[1].toString()); 
         item[1].style.setProperty('left', item[0].position[0].toString());
         process_phys([item[0]]);
-        
+        //...possibly disgusting? prone to errors if mouseup is never called. (like moving mouse out of window) Possibly inefficent.
         if (clicking) {
+        //using lists like this, while possibly more efficient, is a pain for readability and programming...
             item[0].set_accel([Math.floor(pids[0].process(mouse_pos[0], item[0].position[0], item[0].velocity[0]) * 10), Math.floor(pids[1].process(mouse_pos[1], item[0].position[1], item[0].velocity[1]) * 10)]);
         }
-        
-        console.log(Math.floor(pids[0].process(mouse_pos[0], item[0].position[0], item[0].velocity[0]) * 10));
-        console.log(item[0].acceleration);
         await new Promise(r => setTimeout(r, 25));
     }
 }
