@@ -1,7 +1,7 @@
 
 class Vector { 
-    add_vector(vect1, vect2) {
-        return (vect1.x + vect2.x, vect1.y + vect2.y)
+    static add_vector(vect1, vect2) {
+        return (vect1[0] + vect2[0], vect1[1] + vect2[1])
     }
 }
 
@@ -11,7 +11,6 @@ class PhysObject {
         this.velocity = velocity;
         this.acceleration = acceleration;
         this.position = position;
-        return this
     }
     set_mass(new_mass) {
         this.mass = new_mass;
@@ -22,14 +21,15 @@ class PhysObject {
     set_accel(new_accel) {
         this.acceleration = new_accel;
     }
+    set_pos(new_pos) {
+        this.position = new_pos;
+    }
 }
 
 function process_velo(objects) {
-    for(i in objects) {
+    for(i of objects) {
+        console.log(objects)
         i.set_velo(Vector.add_vector(i.acceleration, i.velocity));
         i.set_pos(Vector.add_vector(i.velocity, i.position));
     }
-    console.log(objects.position);
 }
-
-process_velo(new PhysObject(10, (5, 5), (5, -5), (0, 0)))
