@@ -1,5 +1,5 @@
 import "./physics.js";
-import { PhysObject, DrivableObject, process_phys } from "./physics.js";
+import { PhysObject, DrivableObject, process_phys, Collider } from "./physics.js";
 import "./pid.js";
 import {pid} from "./pid.js";
 var item = null;
@@ -7,6 +7,9 @@ var pids = null;
 var loop = false;
 var clicking = false;
 var mouse_pos = [0, 0];
+
+//TODO BLAST EM GONE
+var test_tmp = new PhysObject(10, [0, 0], [100, 100], new Collider([100, 100], [150, 150]));
 load()
 
 //this is disgusting
@@ -26,7 +29,7 @@ async function process() {
         //much more disgusting
         item[1].style.setProperty('top', item[0].position[1].toString()); 
         item[1].style.setProperty('left', item[0].position[0].toString());
-        process_phys([item[0]]);
+        process_phys([item[0], test_tmp]);
         //...possibly disgusting? prone to errors if mouseup is never called. (like moving mouse out of window) Possibly inefficent.
         if (clicking) {
         //using lists like this, while possibly more efficient, is a pain for readability and programming...
