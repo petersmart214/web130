@@ -20,7 +20,7 @@ class Collider {
             }
             //do checks, for now if overlap
             if (this.position1[0] >= i.collider.position1[0] || this.position1[1] <= i.collider.position1[1]) {
-                colliding_objs.set([this, i], true);
+                colliding_objs.set([this, i], true); //need to ensure same order for different items (sorting??)
                 continue;
             }
             if (this.position2[0] <= i.collider.position2[0] || this.position2[1] >= i.collider.position2[1]) {
