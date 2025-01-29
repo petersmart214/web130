@@ -11,6 +11,8 @@ var mouse_pos = [0, 0];
 //TODO BLAST EM GONE
 var test_tmp = new PhysObject(10, [0, 0], [100, 100], new Collider([100, 100], [150, 150]));
 load();
+start();
+process();
 
 //this is disgusting
 document.addEventListener("keydown", (event) => {console.log(event.key); if ((!event.isComposing) && event.key === "Escape") end()})
@@ -27,6 +29,7 @@ function load() {
 async function process() {
     while (loop) {
         //Partial copypaste from https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D/lineTo
+        console.clear();
         var canvas = document.getElementById('test-canvas');
         var ctx = canvas.getContext('2d');
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -44,7 +47,7 @@ async function process() {
         //using lists like this, while possibly more efficient, is a pain for readability and programming...
             item[0].set_accel([Math.floor(pids[0].process(mouse_pos[0], item[0].position[0], item[0].velocity[0]) * 10), Math.floor(pids[1].process(mouse_pos[1], item[0].position[1], item[0].velocity[1]) * 10)]);
         }
-        await new Promise(r => setTimeout(r, 25));
+        await new Promise(r => setTimeout(r, 100));
     }
 }
 

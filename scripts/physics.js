@@ -2,6 +2,9 @@ class Vector {
     static add_vector(vect1, vect2) {
         return [vect1[0] + vect2[0], vect1[1] + vect2[1]]
     }
+    static mult_vector(vect, coeff) {
+        return [vect[0] * coeff, vect[1] * coeff]
+    }
 }
 class Collider {
     //should seperate into a series of shapes/dynamic form but not now NOW WITH LINES BABY!! (so I can get normals??)
@@ -14,26 +17,32 @@ class Collider {
         //do cool maths
         return [1, 1];
     }
-    is_colliding(obj_list, colliding_objs) {
+    is_colliding(obj_list) {
+        var colliding_objs = [];
+        console.log("Object: " + this);
         for (var i of obj_list) {
+            if (i.collider === this) {
+                continue;
+            }
             if (i.collider == null) {
                 continue;
             }
+            console.log("Object to test: " + i);
             var tmp_col_x = Math.abs(i.collider.position1[0] - this.position1[0])
             var tmp_col_y = Math.abs(i.collider.position1[1] - this.position1[1])
             var tmp_rel_xdiff = Math.abs(i.collider.position1[0] - i.collider.position2[0])
             var tmp_rel_ydiff = Math.abs(i.collider.position1[1] - i.collider.position2[1])
 
-            console.log("col x: " + tmp_col_x);
-            console.log("col y: " + tmp_col_y);
-            console.log("rel x: " + tmp_rel_xdiff);
-            console.log("rel y: " + tmp_rel_ydiff);
+            console.log("       x difference of objects: " + tmp_col_x);
+            console.log("       y difference of objects: " + tmp_col_y);
+            console.log("       difference of x together: " + tmp_rel_xdiff);
+            console.log("       difference of y together: " + tmp_rel_ydiff);
             
-            console.log("rel x according to y on slope: " + (Math.max(0, Math.min(tmp_rel_xdiff, tmp_col_y * (tmp_rel_xdiff > 0 ? (tmp_rel_ydiff / tmp_rel_xdiff) : 0))))); 
+            //console.log("rel x according to y on slope: " + (Math.max(0, Math.min(tmp_rel_xdiff, tmp_col_y * (tmp_rel_xdiff > 0 ? (tmp_rel_ydiff / tmp_rel_xdiff) : 0))))); 
 
             if (this.position1[0] >= (Math.max(0, Math.min(tmp_rel_xdiff, tmp_col_y * (tmp_rel_ydiff / tmp_rel_xdiff)))) + i.collider.position1[0]) {
                 console.log("Objects colliding!");
-                colliding_objs.set([this, i], true);
+                colliding_objs.push(i);
                 continue;
             }
             /*
@@ -47,9 +56,7 @@ class Collider {
                 continue;
             }
             */
-
         }
-        //console.log(colliding_objs);
         return colliding_objs;
     }
 }
@@ -77,8 +84,10 @@ class PhysObject {
         }
     }
 
-    collide(collider) {
-        return;
+    collide(obj) {
+        var mass_ratio = obj.mass > 0 ? this.mass / obj.mass : 0;
+        var vector_diff = Vector.add_vector(this.velocity, Vector.mult_vector(obj.velocity, -1))
+        this.velocity = Vector.add_vector(this.velocity, Vector.mult_vector(vector_diff, mass_ratio))
     }
 
 }
@@ -94,20 +103,21 @@ class DrivableObject extends PhysObject {
 }
 
 function process_phys(objects) {
-    var colliding_objs = new Map();
     for(var i of objects) {
-        console.log(i);
         i.set_pos(Vector.add_vector(i.velocity, i.position));
         if (i.collider != null) i.set_pos(Vector.add_vector(i.velocity, i.position));
         if (i instanceof DrivableObject) {
             i.set_velo(Vector.add_vector(i.velocity, i.acceleration));
         }
         if(i.collider != null) {
-            colliding_objs = i.collider.is_colliding(objects, colliding_objs);
+            process_collides(i.collider.is_colliding(objects));
         }
     }
-    for (var ii in colliding_objs) {
+}
 
+function process_collides(object, collided) {
+    for(var i in collided) {
+        object.collide(i);
     }
 }
 
