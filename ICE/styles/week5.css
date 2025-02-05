@@ -1,27 +1,42 @@
 :root {
     --primary-color: #ffffff;
-    --hover-color: #000000;
-    --background-color: #3b94b8;
+    --border-color: #616161;
+    --background-color: #a3a3a3;
+}
+
+body {
+    margin: auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    background-color: var(--background-color);
+}
+
+#content {
+    min-width: 100%;
 }
 
 #top img {
     display: block;
-    max-width: 100%;
+    min-width: 100%;
     margin: auto;
     object-fit: cover;
 }
 
-#grid, #bottom {
+#grid {
+    min-height: fit-content;
     display: grid;
     justify-content: center;
     grid-template-columns: 1fr 1fr 1fr;
 }
 
 #bottom {
-    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 #grid img {
+    border: 15px solid var(--border-color);
     border-radius: 50%;
     max-width: 40%;
     margin: auto;
