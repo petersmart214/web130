@@ -34,9 +34,9 @@ header {
 }
 
 footer {
-    position: absolute;
     margin-left: 10px;
-    bottom: 10px;
+    margin-top: 25px;
+    margin-bottom: 10px;
     font-family: var(--sec-font);
     font-size: small;
 }
