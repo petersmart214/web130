@@ -25,12 +25,12 @@
 
 body {
     background-color: var(--secondary-color);
+    margin: 0;
 }
 header {
     background-color: var(--primary-color);
     display: grid;
     grid-template-columns: 150px auto;
-    column-gap: 10px;
     align-items: center;
 }
 #logo_link {
@@ -42,12 +42,18 @@ header {
     width: 150px;
 }
 nav {
-    display: flex;
-    justify-content: space-around;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    height: 100%;
 }
-nav a:hover {
+nav div:hover {
     background-color: var(--nav-hover-background-color);
     color: var(--nav-hover-link-color);
+}
+nav div {
+    height: 100%;
+    align-content: center;
+    text-align: center;
 }
 .book, .join {
     background-color: var(--nav-background-color);
