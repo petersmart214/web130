@@ -4,8 +4,10 @@
   /* change the values below to your colors from your palette */
   --primary-color: #41858A;
   --secondary-color: #a6b6ac;
+  --third-color: #8d9e94;
   --accent1-color: #943619;
   --accent2-color: #B9D9AC;
+  --border-color: #000000;
 
   /* change the values below to your chosen font(s) */
   --heading-font: Verdana, sans-serif;
@@ -119,7 +121,7 @@ nav a {
     grid-row: 1 / 2;
     margin-top: 100px;
 }
-#hero-msg h1 {
+#hero-msg h2 {
     text-align: center;
 }
 #hero-msg h4 {
@@ -194,6 +196,49 @@ footer a:hover {
     color: var(--paragraph-color-on-color);
 }
 
+/* blog.html */
+
+#blog-content {
+    margin: 10px;
+}
+
+.post {
+    background-color: var(--third-color);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+
+.post .title_box {
+    padding: 10px;
+    margin: 0;
+    height: 100%;
+    background-color: var(--primary-color);
+}
+
+.post .title_box h2 {
+    margin: 0;
+    font-family: var(--heading-font);
+    color: var(--headline-color-on-color);
+}
+
+.post img {
+    float: left;
+    max-width: 250px;
+    max-height: 250px;
+    margin-right: 10px;
+}
+
+.post .postgrid {
+    padding: 10px;
+    min-height: 250px;
+}
+
+.post p {
+    margin-top: 0;
+    font-family: var(--paragraph-font);
+    color: var(--paragraph-color-on-white);
+}
+
 
 @media screen and (max-width: 900px) {
     #hero, .home-grid {
@@ -216,7 +261,7 @@ footer a:hover {
     #hero-msg h4 {
         display: none;
     }
-    #hero-msg h1 {
+    #hero-msg h2 {
         color: #6f7364;
     }
     .home-title {
@@ -237,4 +282,5 @@ footer a:hover {
     footer {
         margin-top: 25px;
     }
+
 }
