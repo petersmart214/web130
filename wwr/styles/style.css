@@ -239,6 +239,20 @@ footer a:hover {
     color: var(--paragraph-color-on-white);
 }
 
+/* contactus.html */
+
+#feedback {
+    background-color: antiquewhite;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: .5em;
+    /* make this element invisible until we are ready for it */     
+}
+.moveDown {
+    margin-top: 3em;
+}
 
 @media screen and (max-width: 900px) {
     #hero, .home-grid {
