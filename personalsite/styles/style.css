@@ -28,7 +28,7 @@ body {
     margin: 0;
 }
 
-#content {
+#contenthome {
     display: grid;
     grid-template-columns: 60% 1fr;
     column-gap: 50px;

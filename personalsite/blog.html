@@ -1,13 +1,13 @@
 <head>
     <meta charset="utf-8">
     <title>Home Page</title>
-    <link type="text/css" rel="stylesheet" href="styles/aboutmestyle.css">
+    <link type="text/css" rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
     <header>
         <nav id="navbar">
-            <a href="index.html">
+            <a class="cornerlogo" href="index.html">
                 <img src="images/logomain.svg" alt="Home Logo Link">
             </a>
             <a href="blog.html">Blog</a>
@@ -16,31 +16,36 @@
         </nav>
 
     </header>
-    <div id="content">
-       <div class="blog-grid">
-        <div class="blog">
-            <h4 class="blogtitle">Test Title</h4>
-            <h4 class="blogdate">6/29/2024</h4>
-            <p class="blogcontent">Blog content</p>
-            <h4 class="blogtitle">Test Title</h4>
-            <h4 class="blogdate">6/29/2024</h4>
-            <p class="blogcontent">Blog content</p>
-            <h4 class="blogtitle">Test Title</h4>
-            <h4 class="blogdate">6/29/2024</h4>
-            <p class="blogcontent">Blog content</p>
+    <div id="contentblog">
+        <div class="importantposts">
+            <div class="h1box"><h1>Blog Posts</h1></div>
+            <div class="timedpost">
+                <div><h3>Search and Filtering</h3>
+                <h4>3/29/2025</h4></div>
+                <p>Once blog posts are automatically populated, I can implement a search bar, as well as other filters, like by date, and by type.</a></p>
+            </div>
+            <div class="timedpost">
+                <div><h3>The Future of this Site</h3>
+                <h4>6/29/2024</h4></div>
+                <p>I am in the process of constructing this site! You can find details here: <a href="site-plan.html">Site Plan</a></p>
+            </div>
+            <div class="timedpost">
+                <div><h3>Future Automation</h3>
+                <h4>6/29/2024</h4></div>
+                <p>I will eventually figure out how to automatically populate the recent post via extracting them from the blog(file?)</p>
+            </div>
         </div>
-       </div>
     </div>
 
 
     <footer>
-        <p>Peter Smart</p>
-        <p>peter.kent.smart@gmail.com</p>
-        <div class="footerlogos">
-            <a href="https://github.com/petersmart214">
+        <div id="footercontent">
+        <div class="griditem"><p>Peter Smart</p>
+        <p>peter.kent.smart@gmail.com</p></div>
+        <div class="griditem"><a href="https://github.com/petersmart214">
                 <img src="images/github-mark.png" alt="My Github">
-            </a>
-            <a href="site-plan.html">Site Plan</a>
+            </a></div>
+            <div class="griditem"><a href="site-plan.html">Site Plan</a></div>
         </div>
     </footer>
 </body>
